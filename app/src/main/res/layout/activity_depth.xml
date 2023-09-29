@@ -1,0 +1,274 @@
+<!--
+   Copyright 2016 Google LLC
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/txBlack"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.google.ar.core.examples.java.helloar.HelloArActivity">
+
+  <android.opengl.GLSurfaceView
+      android:id="@+id/surfaceview"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_gravity="top"/>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/mainContainer"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/txBlack"
+      android:padding="10dp"
+      android:visibility="visible"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/selectSec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_timer_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvSecTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/selectSec"
+        app:layout_constraintStart_toEndOf="@+id/selectSec"
+        app:layout_constraintTop_toTopOf="@+id/selectSec"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/camera"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/selectSec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/selectSec"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvDepthApi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Depth"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/selectSec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/selectSec"
+        tools:ignore="ImageContrastCheck" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/secContainer"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/txBlack"
+      android:padding="10dp"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/mainContainer">
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <RadioButton
+          android:id="@+id/radio10Sec"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="10dp"
+          android:layout_weight="1"
+          android:background="@drawable/rbtn_selector"
+          android:button="@null"
+          android:checked="true"
+          android:gravity="center"
+          android:padding="8dp"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:text=" 10 Sec "
+          android:textColor="@drawable/rbtn_textcolor_selector"
+          android:textSize="12dp" />
+
+      <RadioButton
+          android:id="@+id/radio20Sec"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="5dp"
+          android:layout_marginEnd="5dp"
+          android:layout_weight="1"
+          android:background="@drawable/rbtn_selector"
+          android:button="@null"
+          android:gravity="center"
+          android:padding="8dp"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:text=" 20 Sec "
+          android:textColor="@drawable/rbtn_textcolor_selector"
+          android:textSize="12dp" />
+
+      <RadioButton
+          android:id="@+id/radio30Sec"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_weight="1"
+          android:background="@drawable/rbtn_selector"
+          android:button="@null"
+          android:gravity="center"
+          android:padding="8dp"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:text=" 30 Sec "
+          android:textColor="@drawable/rbtn_textcolor_selector"
+          android:textSize="12dp" />
+    </RadioGroup>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/depthContainer"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/txBlack"
+      android:padding="10dp"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/mainContainer">
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <RadioButton
+          android:id="@+id/radioFulldepth"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="10dp"
+          android:layout_weight="1"
+          android:background="@drawable/rbtn_selector"
+          android:button="@null"
+          android:checked="true"
+          android:gravity="center"
+          android:padding="8dp"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:text="  Full  "
+          android:textColor="@drawable/rbtn_textcolor_selector"
+          android:textSize="12dp" />
+
+      <RadioButton
+          android:id="@+id/radioRawdepth"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="10dp"
+          android:layout_weight="1"
+          android:background="@drawable/rbtn_selector"
+          android:button="@null"
+          android:gravity="center"
+          android:padding="8dp"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:text="  Raw  "
+          android:textColor="@drawable/rbtn_textcolor_selector"
+          android:textSize="12dp" />
+    </RadioGroup>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <TextView
+      android:id="@+id/tvResolution"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="#fff"
+      android:textStyle="bold"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="20dp"
+      tools:ignore="ImageContrastCheck" />
+
+  <TextView
+      android:id="@+id/camera_intrinsics_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentBottom="true"
+      android:padding="20dp"
+      android:textColor="#ffffff"/>
+
+  <ImageView
+      android:id="@+id/record_button"
+      android:layout_width="40dp"
+      android:layout_height="76dp"
+      android:src="@drawable/ic_start"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentEnd="true"
+      android:layout_alignBottom="@id/surfaceview"
+      android:layout_marginBottom="100dp"
+      android:textColor="@android:color/holo_green_light" />
+
+  <ImageView
+      android:id="@+id/playback_button"
+      android:layout_width="60dp"
+      android:layout_height="76dp"
+      android:layout_alignParentRight="true"
+      android:src="@drawable/baseline_replay_circle_filled_24"
+      android:layout_alignBottom="@id/surfaceview"
+      android:layout_marginBottom="100dp"
+      android:textColor="@android:color/holo_green_light" />
+
+<!--  <ImageButton-->
+<!--      android:id="@+id/settings_button"-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:layout_alignParentEnd="true"-->
+<!--      android:layout_alignParentTop="true"-->
+<!--      android:layout_margin="25dp"-->
+<!--      android:src="@drawable/ic_settings"-->
+<!--      android:background="@android:color/transparent"/>-->
+
+</RelativeLayout>
